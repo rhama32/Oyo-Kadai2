@@ -38,12 +38,13 @@
         </tr>
 
       </table>
-      <div>コメント件数:<%= @book.book_comments.count %></div>
+      <div>コメント数:<%= @book.book_comments.count %></div>
 
          <% @book.book_comments.each do |book_comment| %>
-          <%= image_tag book_comment.user.get_profile_image %>
+        <div><%= image_tag book_comment.user.get_profile_image %></div>
         <div><%= book_comment.user.name %></div>
         <div><%= book_comment.comment %></div>
+        <div><%= link_to 'Destroy', book_book_comment_path(@book, book_comment) , method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></div>
          <% end %>
 
          <div>
