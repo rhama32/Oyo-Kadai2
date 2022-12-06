@@ -10,11 +10,11 @@ before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
     @books = Book.all
     @book = Book.new
-    
+
   end
 
   def create
-    
+
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
@@ -26,7 +26,7 @@ before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   end
 
   def edit
-    @user = User.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def update
