@@ -11,13 +11,13 @@ class BookCommentsController < ApplicationController
  end
 
   def destroy
-   book = Book.find(params[:book_id])
-   comment = current_user.book_comments.find_by(book_id: book.id)
+   comment = BookComment.find_by(id: params[:id], book_id: params[:book_id])
    comment.destroy
+   @book = Book.find(params[:book_id])
    #redirect_to request.referer
    #render :book_comment
   end
-  
+
 
   private
   def book_comment_params
