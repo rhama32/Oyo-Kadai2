@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
+  has_many :rooms, through: :user_rooms
 
   #フォローした時の処理
   def follow(user_id)
